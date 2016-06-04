@@ -1,4 +1,4 @@
-var app = angular.module('vote_app', ['ngRoute']);
+var app = angular.module('vote_app', ['ngRoute', 'ngMaterial']);
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -11,5 +11,5 @@ app.config(function($routeProvider) {
 			controller: 'CandidatesController'
 		});
 
-	
+
 });
