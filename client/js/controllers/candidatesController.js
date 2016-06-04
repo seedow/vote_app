@@ -1,5 +1,7 @@
 var module = angular.module('vote_app');
 
+//TODO: return to home button
+//TODO: proper display for cards
 module.controller('CandidatesController', function($scope, $location, candidatesService, $mdDialog) {
 	$scope.candidates  = [];
 	$scope.votedCandidate = null;
@@ -12,6 +14,7 @@ module.controller('CandidatesController', function($scope, $location, candidates
 		return index === $scope.votedCandidate;
 	};
 
+	//TODO: change template to standard and not allow vote is already voted
 	$scope.showDetails = function(ev, index) {
 		var currentCandidate = $scope.candidates[index];
 		var confirm = $mdDialog.confirm()
@@ -23,7 +26,7 @@ module.controller('CandidatesController', function($scope, $location, candidates
 			.cancel('Inapoi (pare dala cu dosar...)');
 
 		$mdDialog.show(confirm).then(function() {
-				candidatesService.vote(currentCandidate.id);
+				candidatesService.vote(currentCandidate._id);
 				$scope.votedCandidate = index;
 			}, 
 
