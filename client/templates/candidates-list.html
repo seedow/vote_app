@@ -1,0 +1,13 @@
+<div>
+	<h3>Lista de candidati</h3>
+	<div ng-repeat="candidate in candidates">
+		<div>Nume: {{candidate.name}}</div>
+		<div>Sex: {{candidate.details.gender}}</div>
+		<div>Varsta: {{candidate.details.age}}</div>
+		<div>Partid: {{candidate.details.party}}</div>
+		<div>Nationalitate: {{candidate.details.gender}}</div>
+		<img ng-src="{{candidate.details.party_logo}}" />
+		<img ng-src="{{candidate.details.candidate_picture}}" />
+		<div>Scurta descriere: {{candidate.details.description}}</div>
+	</div>
+</div>

@@ -5,5 +5,11 @@ app.config(function($routeProvider) {
 		.when('/', {
 			templateUrl: "../../templates/home.html",
 			controller: 'HomeController'
+		})
+		.when('/candidates', {
+			templateUrl: "../../templates/candidates-list.html",
+			controller: 'CandidatesController'
 		});
+
+	
 });
