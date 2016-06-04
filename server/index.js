@@ -14,15 +14,20 @@ var candidate = require("./modules/candidate"),
 
 dbOps.clean();
 
+server.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  winston.log('info', 'got a request');
+  next();
+});
+
 // serve the landing page 
 server.use("/", express.static(pathToStatic));
 
 server.get("/getCandidates", function(req, res) {
-	winston.log('info', 'got getCandidates request');
 	dbOps.getCandidates(function(result) {
 		res.send(result);
 	})
-
 })
 
 server.listen(serverPort, function() {
