@@ -2,10 +2,15 @@ var module = angular.module('vote_app');
 
 module.controller('CandidatesController', function($scope, $location, candidatesService, $mdDialog) {
 	$scope.candidates  = [];
+	$scope.votedCandidate = null;
 
 	candidatesService.getCandidates().then(function(candidates) {
 		$scope.candidates = candidates;
 	});
+
+	$scope.isVoted = function(index) {
+		return index === $scope.votedCandidate;
+	};
 
 	$scope.showDetails = function(ev, index) {
 		var currentCandidate = $scope.candidates[index];
@@ -18,7 +23,8 @@ module.controller('CandidatesController', function($scope, $location, candidates
 			.cancel('Inapoi (pare dala cu dosar...)');
 
 		$mdDialog.show(confirm).then(function() {
-				$scope.status = 'You decided to get rid of your debt.';
+				candidatesService.vote(currentCandidate.id);
+				$scope.votedCandidate = index;
 			}, 
 
 			function() {
