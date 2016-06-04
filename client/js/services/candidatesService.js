@@ -10,6 +10,7 @@ var candidatesService = function($http) {
 		});
 	};
 
+	//TODO: handle bad response
 	var vote = function(candidateID) {
 		return $http({
 			method: 'GET',
