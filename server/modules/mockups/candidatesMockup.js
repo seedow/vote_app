@@ -1,6 +1,5 @@
 const candidates = [
 {
-	id:0,
 	name:"Harry Andrews",
 	details:{
 		gender:"M",
@@ -13,7 +12,6 @@ const candidates = [
 	}
 },
 {
-	id:1,
 	name:"Cosmin Pangratiu",
 	details:{
 		gender:"M",
@@ -26,7 +24,6 @@ const candidates = [
 	}
 },
 {
-	id:2,
 	name:"Harry Andrews",
 	details:{
 		gender:"M",
@@ -39,7 +36,6 @@ const candidates = [
 	}
 },
 {
-	id:3,
 	name:"Cosmin Pangratiu",
 	details:{
 		gender:"M",
