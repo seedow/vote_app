@@ -3,8 +3,8 @@ var MongoClient = require("mongodb").MongoClient,
 	assert = require("assert")
 
 //db settings
-var host = "52.28.182.213:28017";
-var mongodbUrl = "mongodb://:"+host+"/vote_app"
+var host = "52.28.182.213:27017";
+var mongodbUrl = "mongodb://"+host+"/vote_app"
 
 //custom modules
 var candidatesMockup = require("./mockups/candidatesMockup")
