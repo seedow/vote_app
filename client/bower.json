@@ -1,0 +1,15 @@
+{
+  "name": "client",
+  "homepage": "https://github.com/seedow/vote_app",
+  "authors": [
+    "Constantin Began <constantin.began@siveco.ro>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "1.5.6",
+    "angular-route": "^1.5.6",
+    "angular-material": "^1.0.9"
+  }
+}

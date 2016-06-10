@@ -1,0 +1,26 @@
+<h3>Lista de candidati</h3>
+
+<md-content class="md-padding" layout-xs="column" layout="row">
+	<div flex-xs flex-gt-xs="50" layout="column">
+		<md-card ng-repeat="candidate in candidates">
+			<md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">{{candidate.name}}</span>
+					<span class="md-subhead">Sex: {{candidate.details.gender}}</span>
+					<span class="md-subhead">Varsta: {{candidate.details.age}}</span>
+					<span class="md-subhead">Partid: {{candidate.details.party}}</span>
+					<span class="md-subhead">Nationalitate: {{candidate.details.etnicity}}</span>
+					<span class="md-subhead" ng-show="isVoted($index)"><i class="material-icons">thumb_up</i></span>
+				</md-card-title-text>
+				<md-card-title-media>
+					<div class="md-media-lg card-media">
+						<img ng-src="{{candidate.details.candidate_picture}}" />
+					</div>
+				</md-card-title-media>
+			</md-card-title>
+			<md-card-actions layout="row" layout-align="end center">
+				<md-button class="md-primary md-raised" ng-click="showDetails($event, $index)">Detalii si vot</md-button>
+			</md-card-actions>
+		</md-card>
+	</div>
+</md-content>
