@@ -1,7 +1,7 @@
 var candidatesService = function($http) {
 
-	//var baseURL = "http://localhost:3000";
-	var baseURL = "http://10.233.12.215:3000";
+	var baseURL = "http://localhost:3000";
+	// var baseURL = "http://10.233.12.215:3000";
 
 	//TODO: handle bad response
 	var getCandidates = function() {
