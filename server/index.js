@@ -25,7 +25,7 @@ server.use(function(req, res, next) {
 server.use("/", express.static(pathToStatic));
 
 server.get("/getCandidates", function(req, res) {
-	dbOps.getCandidates(function(result) {
+	dbOps.getCandidates(function(err, result) {
 		res.send(result);
 	})
 })

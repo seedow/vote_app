@@ -6,56 +6,22 @@ var MongoClient = require("mongodb").MongoClient,
 var host = "52.28.182.213:27017";
 var mongodbUrl = "mongodb://"+host+"/vote_app"
 
+var db = require('monk')(mongodbUrl);
+
 //custom modules
-var candidatesMockup = require("./mockups/candidatesMockup")
-var availableCollections = {
-	"candidates": "candidates",
-	"votes": "votes",
-	"users": "users"
-}
-var dbCollections = {};
-var dbUtils = {
-	connect: function(callback) {
-		MongoClient.connect(mongodbUrl, function(err, db) {
-			// console.log(err)
-			callback && callback(db);
-			// db.close();
-		})
-	},
-	formatResults: function(results, db, callback) {
-		var formatedResults = [];
-		results.each(function(err, entry) {
-			if (entry != null) {
-				formatedResults.push(entry)
-			} else {
-				db.close();
-				callback(formatedResults);
-			}
-		})
-	}
-}
+var candidatesMockup = require("./mockups/candidatesMockup"),
+	dbUtils = require("./dbUtils.js");
 
-
+var candidatesCollection = db.get('candidates');
 
 var dbOps = {
 	clean: function() {
-		dbUtils.connect(function(db) {
-			// var myDB = MongoClient.db("vote_app");
-			var candidates = db.collection(availableCollections["candidates"]);
-			candidates.remove(function() {
-				candidates.insertMany(candidatesMockup, function() {
-					db.close();
-				})
-			})
-		})
+		candidatesCollection.remove();
+		dbUtils.insertMany(candidatesCollection, candidatesMockup);
+		// db.close();
 	},
 	getCandidates: function(callback) {
-		dbUtils.connect(function(db) {
-			var candidates = db.collection(availableCollections["candidates"]).find();
-			dbUtils.formatResults(candidates, db, function(result) {
-				callback(result);
-			});
-		})
+		candidatesCollection.find({}, callback);
 	}
 }
 
